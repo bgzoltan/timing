@@ -36,10 +36,10 @@ function outer() {
   return inner;
 }
 
-const fn = outer();
 let timer;
 
 function startStopper() {
+  const fn = outer();
   // Invoke the closures in every second
   timer = setInterval(() => {
     fn();
