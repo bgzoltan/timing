@@ -1,6 +1,12 @@
 // FIRST SAMPLE
 
 const secondsE = document.querySelector("#seconds");
+secondsE.innerText = `00.00.00`;
+const startBE = document.getElementById("startB");
+const endBE = document.getElementById("endB");
+
+startBE.addEventListener("click", startStopper);
+endBE.addEventListener("click", endStopper);
 
 function outer() {
   let seconds = (minutes = hours = 0);
@@ -8,11 +14,11 @@ function outer() {
 
   function inner() {
     seconds++;
-    if (seconds === 61) {
+    if (seconds === 60) {
       seconds = 0;
       minutes++;
     }
-    if (minutes === 61) {
+    if (minutes === 60) {
       minutes = 0;
       hours++;
     }
@@ -31,32 +37,15 @@ function outer() {
 }
 
 const fn = outer();
-// Invoke the closures in every second
-setInterval(() => {
-  fn();
-}, 1000);
+let timer;
 
-// SECOND SAMPLE - CACHING A HIGH COMPUTED DATA INTO AN OBJECT
+function startStopper() {
+  // Invoke the closures in every second
+  timer = setInterval(() => {
+    fn();
+  }, 1000);
+}
 
-// function squareMemoized() {
-//   cache = {};
-//   function square(number) {
-//     if (number in cache) {
-//       console.log("Return from cache");
-//       return cache[number];
-//     } else {
-//       console.log("Calculated");
-//       const result = number * number;
-//       cache[number] = result;
-
-//       return result;
-//     }
-//   }
-//   return square;
-// }
-
-// const fn = squareMemoized();
-// console.log(fn(2));
-// console.log(fn(12));
-// console.log(fn(20));
-// console.log(fn(20));
+function endStopper() {
+  clearInterval(timer);
+}
