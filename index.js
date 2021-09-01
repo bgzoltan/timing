@@ -9,6 +9,7 @@ startBE.addEventListener("click", startStopper);
 endBE.addEventListener("click", endStopper);
 
 function outer() {
+  console.log("Outer");
   let seconds = (minutes = hours = 0);
   let secondsStr = (minutesStr = hoursStr = "");
 
@@ -37,15 +38,17 @@ function outer() {
 }
 
 let timer;
+const fn = outer();
 
 function startStopper() {
-  const fn = outer();
   // Invoke the closures in every second
+  console.log("Start");
   timer = setInterval(() => {
     fn();
   }, 1000);
 }
 
 function endStopper() {
+  console.log("Stop");
   clearInterval(timer);
 }
