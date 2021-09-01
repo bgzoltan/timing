@@ -5,13 +5,15 @@ secondsE.innerText = `00.00.00`;
 const startBE = document.getElementById("startB");
 const endBE = document.getElementById("endB");
 const clearBE = document.getElementById("clearB");
+// new Audio("./countdown-sound.mp3").play();
+
+const clockE = document.getElementById("clock");
 
 startBE.addEventListener("click", startStopper);
 endBE.addEventListener("click", endStopper);
 clearBE.addEventListener("click", clearStopper);
 
 function outer() {
-  console.log("Outer");
   let seconds = (minutes = hours = 0);
   let secondsStr = (minutesStr = hoursStr = "");
 
@@ -20,6 +22,7 @@ function outer() {
     if (seconds === 60) {
       seconds = 0;
       minutes++;
+      clockE.play();
     }
     if (minutes === 60) {
       minutes = 0;
@@ -43,6 +46,7 @@ let timer;
 var fn = outer();
 
 function startStopper() {
+  clockE.play();
   // Invoke the closures in every second
 
   // clear timer before setting again
