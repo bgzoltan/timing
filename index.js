@@ -4,9 +4,11 @@ const secondsE = document.querySelector("#seconds");
 secondsE.innerText = `00.00.00`;
 const startBE = document.getElementById("startB");
 const endBE = document.getElementById("endB");
+const clearBE = document.getElementById("clearB");
 
 startBE.addEventListener("click", startStopper);
 endBE.addEventListener("click", endStopper);
+clearBE.addEventListener("click", clearStopper);
 
 function outer() {
   console.log("Outer");
@@ -38,20 +40,24 @@ function outer() {
 }
 
 let timer;
-const fn = outer();
+var fn = outer();
 
 function startStopper() {
   // Invoke the closures in every second
 
   // clear timer before setting again
   clearInterval(timer);
-  console.log("Start");
   timer = setInterval(() => {
     fn();
   }, 1000);
 }
 
 function endStopper() {
-  console.log("Stop");
   clearInterval(timer);
+}
+
+function clearStopper() {
+  clearInterval(timer);
+  secondsE.innerText = `00.00.00`;
+  fn = outer();
 }
