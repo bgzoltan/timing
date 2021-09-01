@@ -7,17 +7,30 @@
     <meta name="author" content="Zoltán Bagdány" />
     <meta name="keywords" content="HTML, CSS, JavaScript" />
     <meta name="description" content="Timing with closures in Javascript" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>Timing</title>
     <style>
+      * {
+        font-family: "Exo 2", sans-serif;
+      }
       body {
         width: 100vw;
         height: 100vh;
+        box-sizing: border-box;
       }
       #root {
+        width: 500px;
+        height: auto;
         font-size: 50px;
         background-color: tomato;
         padding: 5px;
         border-radius: 9px;
+        box-sizing: border-box;
       }
       body,
       #root {
@@ -27,18 +40,39 @@
         align-items: center;
       }
       button {
-        font-size: 40px;
-        padding: 5px;
+        width: 120px;
+        height: 70px;
+        font-size: 35px;
+        padding: 5px 10px 5px 10px;
         border-radius: 9px;
         background-color: crimson;
         color: whitesmoke;
-        border: none;
-        margin: 2px;
+        border-top: 4px solid crimson;
+        border-left: 4px solid crimson;
+        border-bottom: 4px solid rgb(148, 8, 8);
+        border-right: 4px solid rgb(148, 8, 8);
+        margin: 3px;
+        /* box-shadow: 2px 2px rgb(148, 8, 8); */
+      }
+      button:hover {
+        font-size: 32px;
+        cursor: pointer;
+        color: rgb(43, 16, 16);
+        border-top: 4px solid rgb(148, 8, 8);
+        border-left: 4px solid rgb(148, 8, 8);
+        border-bottom: 2.5px solid rgb(148, 8, 8);
+        border-right: 2.5px solid rgb(148, 8, 8);
+        box-shadow: 0px 0px rgb(148, 8, 8);
+      }
+      h1 {
+        font-size: 60px;
+        margin: 0px;
       }
     </style>
   </head>
   <body>
     <div id="root">
+      <h1>STOPPER</h1>
       <div id="seconds"></div>
       <div>
         <button id="startB">Start</button><button id="endB">Stop</button
