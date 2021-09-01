@@ -42,6 +42,9 @@ const fn = outer();
 
 function startStopper() {
   // Invoke the closures in every second
+
+  // clear timer before setting again
+  clearInterval(timer);
   console.log("Start");
   timer = setInterval(() => {
     fn();
